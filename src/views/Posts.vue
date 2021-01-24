@@ -57,7 +57,7 @@ export default {
     return {
       loading: true,
       posts: [],
-      userId: null,
+      userId: null
     }
   },
   async beforeMount() {

@@ -1,6 +1,6 @@
 <template>
-    <div class="Navbar">
-        <div class="d-flex shadow-sm px-2 py-2">
+    <div class="Navbar pb-5">
+        <div class="d-flex fixed-top shadow-sm px-2 py-2">
             <span 
             @click="showSidebar = true"
             class="cursor material-icons md-32 my-auto d-inline-block d-md-none me-3">
@@ -78,11 +78,12 @@
     }
 }
 .overlay {
+    left: 0;
     top: 0;
-    z-index: 999;
     height: 100vh;
     width: 100%;
-    position: absolute!important;
+    position: fixed;
+    z-index: 1400;
 }
 .cursor {
     cursor: pointer;
@@ -118,6 +119,10 @@
 }
 .border__theme_2 {
     border-bottom: 2px solid var(--font-color) !important;
+    color: var(--font-color) !important;
+}
+.border__theme_5 {
+    border-bottom: 5px solid var(--font-color) !important;
     color: var(--font-color) !important;
 }
 </style>

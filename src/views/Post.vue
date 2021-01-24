@@ -46,7 +46,7 @@
                         class="user__image"
                         />
                     </div>
-                    <div class="col-10 col-md-11">
+                    <div class="col-10 col-md-7">
                         <h5 
                         class="mb-1 fw-bold text-capitalize"
                         v-bind:class="[comment.expanded ? !comment.expanded : 'text-truncate', '']"

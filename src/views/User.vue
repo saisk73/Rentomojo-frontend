@@ -17,7 +17,7 @@
                     class="user__image"
                     />
                 </div>
-                <div class="col-md-6 mt-sm-4 mt-md-0">
+                <div class="col-md-6 mt-sm-4 mt-md-0" style="position: relative; overflow: hidden;">
                     <p  class="fw-normal mb-0">@{{user.username}}</p>
                     <h4 class="fw-normal mb-0">{{user.name}}</h4>
                     <a 
@@ -26,49 +26,55 @@
                     <div class="user__details__wrapper d-flex mt-3">
                         <div class="col-6 user__details__tab"
                         @click="activeTab = 1"
-                        :class="[(activeTab == 1 ? 'user__details__tab__active border__theme_2': '')]"
+                        :class="[(activeTab == 1 ? 'user__details__tab__active border__theme_5': '')]"
                         >
                             <p class="text-center m-0 p-0">Contact Details</p>
                         </div>
                         <div class="col-6 user__details__tab"
                         @click="activeTab = 2"
-                        :class="[(activeTab == 2 ? 'user__details__tab__active border__theme_2': '')]"
+                        :class="[(activeTab == 2 ? 'user__details__tab__active border__theme_5': '')]"
                         >
                             <p class="text-center m-0 p-0">Company Details</p>
                         </div>
                     </div>
                     <!-- tab content -->
-                    <div v-if="activeTab == 1" class="pt-3">
-                        <p class="mb-2"> 
-                            <span class="material-icons md-24 me-2">call</span>
-                            {{user.phone}}    
-                        </p>
-                        <p class="mb-2"> 
-                            <span class="material-icons md-24 me-2">public</span>
-                            {{user.website}}    
-                        </p>
-                        <p class="mb-2"> 
-                            <span class="material-icons md-24 me-2">streetview</span>
-                            {{user.address.street}}    
-                        </p>
-                        <p class="mb-2"> 
-                            <span class="material-icons md-24 me-2">house</span>
-                            {{user.address.suite}}    
-                        </p>
-                        <p class="mb-2"> 
-                            <span class="material-icons md-24 me-2">location_city</span>
-                            {{user.address.city}}    
-                        </p>
-                        <p class="mb-2"> 
-                            <span class="material-icons md-24 me-2">repeat_one</span>
-                            {{user.address.zipcode}}    
-                        </p>
-                        <p class="mb-2"> 
-                            <span class="material-icons md-24 me-2">map</span>
-                            {{user.address.geo.lat}} {{user.address.geo.lng}}    
-                        </p>
+                    <div 
+                    v-if="activeTab == 1" 
+                    class="pt-3">
+                        <div class="user__tab__content">
+                            <p class="mb-2"> 
+                                <span class="material-icons md-24 me-2">call</span>
+                                {{user.phone}}    
+                            </p>
+                            <p class="mb-2"> 
+                                <span class="material-icons md-24 me-2">public</span>
+                                {{user.website}}    
+                            </p>
+                            <p class="mb-2"> 
+                                <span class="material-icons md-24 me-2">streetview</span>
+                                {{user.address.street}}    
+                            </p>
+                            <p class="mb-2"> 
+                                <span class="material-icons md-24 me-2">house</span>
+                                {{user.address.suite}}    
+                            </p>
+                            <p class="mb-2"> 
+                                <span class="material-icons md-24 me-2">location_city</span>
+                                {{user.address.city}}    
+                            </p>
+                            <p class="mb-2"> 
+                                <span class="material-icons md-24 me-2">repeat_one</span>
+                                {{user.address.zipcode}}    
+                            </p>
+                            <p class="mb-2"> 
+                                <span class="material-icons md-24 me-2">map</span>
+                                {{user.address.geo.lat}} {{user.address.geo.lng}}    
+                            </p>
+                        </div>
                     </div>
-                    <div v-if="activeTab == 2" class="pt-3">
+                    <div 
+                    v-if="activeTab == 2" 
+                    class="user__tab__content pt-3">
                         <p class="mb-2"> 
                             <span class="material-icons md-24 me-2">business</span>
                             {{user.company.name}}    
@@ -103,6 +109,16 @@
             }
         }
     }
+    &__tab {
+        &__content {
+            animation-name: tabanim;
+            animation-duration: .5s;
+        }
+    }
+}
+@keyframes tabanim {
+    0% { transform: translatex(-200px);}
+    100% { transform: translatex(0px);}
 }
 </style>
 
