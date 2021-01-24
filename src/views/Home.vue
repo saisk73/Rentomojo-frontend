@@ -1,6 +1,10 @@
 <template>
-  <div class="Home px-2">
-    <Users class="pt-3" />
+  <div class="Home">
+    <vue-headful
+      title="Home | My App"
+    />
+    <Navbar />
+    <Users class="pt-3 px-2" />
   </div>
 </template>
 

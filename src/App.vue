@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <Navbar />
-    <router-view/>
+    <div class="views">
+      <router-view/>
+    </div>
+    <Footer />
   </div>
 </template>
 
@@ -41,10 +43,14 @@
   font-size: 48px;
   vertical-align: middle !important;
 }
+.views {
+  min-height: 60vh;
+}
 </style>
 
 <script>
 import Navbar from './components/common/Navbar.vue';
+import Footer from './components/common/Footer.vue';
 export default {
   data() {
     return {
@@ -52,12 +58,8 @@ export default {
     }
   },
   components: {
-    Navbar
-  },
-  watch: {
-      '$route' (to, from) {
-        document.title = to.meta.title || 'Your Website'
-      }
+    Navbar,
+    Footer
   },
 }
 </script>

@@ -23,7 +23,27 @@ const routes = [
     meta: {
       title: 'Posts',
     }
+  },
+  {
+    path: '/posts/:id',
+    name: 'Post',
+    component: () => import(/* webpackChunkName: "post" */ '../views/Post.vue')
+  },
+  {
+    path: '/users/:id',
+    name: 'User',
+    component: () => import(/* webpackChunkName: "user" */ '../views/User.vue')
+  },
+  {
+    path: '/404',
+    name: 'Notfound',
+    component: () => import(/* webpackChunkName: "notfound" */ '../views/NotFound.vue')
+  },
+  {
+    path: '**',
+    redirect: '/404'
   }
+
 ]
 
 const router = new VueRouter({
