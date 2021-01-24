@@ -7,9 +7,15 @@
         <Navbar />
         <div class="container mt-3" v-if="loading == false">
             <h1 class="display-4">{{post.title}}</h1>
+            <div v-if="imageLoaded == false" class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
             <img 
             src="https://source.unsplash.com/random/1600x500" 
             class="post__image"
+            @load="imageLoaded = true"
             />
             <div class="d-flex justify-content-between mt-3">
                 <span>By: 
@@ -46,7 +52,8 @@ export default {
         loading: true,
         post: {},
         user: {},
-        postImage: ''
+        postImage: '',
+        imageLoaded: false
     }
   },
   async beforeMount() {
