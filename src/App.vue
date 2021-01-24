@@ -1,32 +1,63 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <Navbar />
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+  font-family: 'Roboto', sans-serif;
+}
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+  font-size: 18px;
+  vertical-align: bottom !important;
 }
 
-#nav {
-  padding: 30px;
+.material-icons.md-24 {
+  font-size: 24px;
+  vertical-align: bottom !important;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.material-icons.md-36 {
+  font-size: 36px;
+  vertical-align: bottom !important;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.material-icons.md-36m {
+  font-size: 36px;
+  vertical-align: middle !important;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+  vertical-align: bottom !important;
+}
+
+.material-icons.md-48m {
+  font-size: 48px;
+  vertical-align: middle !important;
 }
 </style>
+
+<script>
+import Navbar from './components/common/Navbar.vue';
+export default {
+  data() {
+    return {
+
+    }
+  },
+  components: {
+    Navbar
+  },
+  watch: {
+      '$route' (to, from) {
+        document.title = to.meta.title || 'Your Website'
+      }
+  },
+}
+</script>
