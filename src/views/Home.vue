@@ -4,7 +4,7 @@
       title="Home | My App"
     />
     <Navbar />
-    <Users class="pt-3 px-2" />
+    <Users class="px-2 mt-5" />
   </div>
 </template>
 

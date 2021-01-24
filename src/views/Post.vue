@@ -5,10 +5,20 @@
             :description="post.body"
         />
         <Navbar />
-        <div class="container" v-if="loading == false">
+        <div class="container mt-3" v-if="loading == false">
             <h1 class="display-4">{{post.title}}</h1>
-            <div class="d-flex justify-content-between">
-                <span>By: {{user.name}}</span>
+            <img 
+            src="https://source.unsplash.com/random/1600x500" 
+            class="post__image"
+            />
+            <div class="d-flex justify-content-between mt-3">
+                <span>By: 
+                    <a 
+                    class="theme__element"
+                    :href="'/users/' + user.id">
+                        {{user.name}}
+                    </a>
+                </span>
                 <span>Updated on: {{moment(post.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}}</span>
             </div>
             <h5 class="fw-light mt-3">{{post.body}}</h5>
@@ -19,6 +29,10 @@
 <style lang="scss" scoped>
 .container {
     min-height: 70vh;
+}
+.post__image {
+    width: 100%;
+    height: auto;
 }
 </style>
 
@@ -32,6 +46,7 @@ export default {
         loading: true,
         post: {},
         user: {},
+        postImage: ''
     }
   },
   async beforeMount() {
@@ -52,6 +67,10 @@ export default {
       axios.get(user_api_url)
       .then((res)=> {
           this.user = res.data;
+      })
+      axios.get('https://source.unsplash.com/random')
+      .then((res)=> {
+          this.postImage = res.data;
       })
       this.loading = false;
   },

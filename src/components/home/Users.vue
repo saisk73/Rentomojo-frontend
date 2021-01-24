@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row justify-content-end p-2 m-0">
-            <div class="col-xxl-4 col-lg-6 col-12 d-flex justify-content-between search__wrapper py-1">
+            <div class="border__theme_1 col-xxl-4 col-lg-6 col-12 d-flex justify-content-between search__wrapper py-1">
                 <input 
                 v-model="searchTerm"
                 type="text"
@@ -43,7 +43,10 @@
                     </p>
                     <div class="mt-2">
                         <a :href="'/users/' + user.id" class="btn btn-dark me-2 px-3">Contact Details</a>
-                        <a :href="'/posts?user=' + user.id" class="btn btn-outline-dark px-3">View Posts</a>
+                        <a 
+                        :href="'/posts?user=' + user.id" 
+                        class="border__theme_1 btn btn-outline-dark px-3"
+                        >View Posts</a>
                     </div>
                 </div>
             </div>

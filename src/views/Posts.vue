@@ -9,7 +9,7 @@
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-    <div class="row m-0">
+    <div class="row m-0 mt-5">
       <div 
       v-for="(post, key) in posts"
       :key="key" 

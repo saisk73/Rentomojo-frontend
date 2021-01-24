@@ -9,7 +9,7 @@
               <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <div class="container pt-5" v-if="loading == false">
+        <div class="container mt-5" v-if="loading == false">
             <div class="row justify-content-start">
                 <div class="col-md-2">
                     <img 
@@ -22,17 +22,17 @@
                     <h4 class="fw-normal mb-0">{{user.name}}</h4>
                     <a 
                     :href="'mailto:' + user.email"  
-                    class="fw-normal text-dark text-decoration-none mb-0">{{user.email}}</a>
+                    class="theme__element fw-normal text-decoration-none mb-0">{{user.email}}</a>
                     <div class="user__details__wrapper d-flex mt-3">
                         <div class="col-6 user__details__tab"
                         @click="activeTab = 1"
-                        :class="[(activeTab == 1 ? 'user__details__tab__active': '')]"
+                        :class="[(activeTab == 1 ? 'user__details__tab__active border__theme_2': '')]"
                         >
                             <p class="text-center m-0 p-0">Contact Details</p>
                         </div>
                         <div class="col-6 user__details__tab"
                         @click="activeTab = 2"
-                        :class="[(activeTab == 2 ? 'user__details__tab__active': '')]"
+                        :class="[(activeTab == 2 ? 'user__details__tab__active border__theme_2': '')]"
                         >
                             <p class="text-center m-0 p-0">Company Details</p>
                         </div>
