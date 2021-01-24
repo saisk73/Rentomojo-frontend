@@ -5,7 +5,7 @@
               <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <div class="row justify-content-end p-2 m-0">
+        <div class="row justify-content-end p-2 m-0" v-if="loading == false">
             <div class="border__theme_1 col-xxl-4 col-lg-6 col-12 d-flex justify-content-between search__wrapper py-1">
                 <input 
                 v-model="searchTerm"

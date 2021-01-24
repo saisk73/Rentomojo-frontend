@@ -24,6 +24,11 @@
   vertical-align: bottom !important;
 }
 
+.material-icons.md-24m {
+  font-size: 24px;
+  vertical-align: middle !important;
+}
+
 .material-icons.md-36 {
   font-size: 36px;
   vertical-align: bottom !important;

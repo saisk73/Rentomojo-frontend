@@ -62,6 +62,10 @@ export default {
   },
   async beforeMount() {
     let userId = this.$route.query.user;
+    let pageNumber = this.$route.query.page;
+    if(pageNumber == undefined) {
+      pageNumber = 1;
+    }
     let api_url;
     if(userId != '' && userId !== undefined) {
       this.userId = userId;

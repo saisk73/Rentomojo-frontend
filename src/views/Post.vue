@@ -27,7 +27,47 @@
                 </span>
                 <span>Updated on: {{moment(post.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}}</span>
             </div>
-            <h5 class="fw-light mt-3">{{post.body}}</h5>
+            <h5 class="fw-light mt-">{{post.body}}</h5>
+            <h4 class="fw-normal mt-5">
+                <span class="material-icons md-24m">comment</span>
+                Comments 
+                {{comments.length}}
+            </h4>
+            <div 
+            v-if="loadingComments == false"
+            class="row m-0">
+                <div 
+                class="col-12 d-flex p-0 pt-2" 
+                v-for="(comment,key) in comments" 
+                :key="key">
+                    <div class="col-2 col-md-1">
+                        <img 
+                        :src="comment.image"
+                        class="user__image"
+                        />
+                    </div>
+                    <div class="col-10 col-md-11">
+                        <h5 
+                        class="mb-1 fw-bold text-capitalize"
+                        v-bind:class="[comment.expanded ? !comment.expanded : 'text-truncate', '']"
+                        >{{comment.name}}</h5>
+                        <p  
+                        class="mb-1"
+                        v-bind:class="[comment.expanded ? !comment.expanded : 'text-truncate', '']"
+                        >
+                        {{comment.body}}
+                        </p>
+                        <p 
+                        v-if="!comment.expanded"
+                        class="text-end">
+                            <span 
+                            @click="expandComment(key)"
+                            class="cursor text-secondary"
+                            >Read More...</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -39,6 +79,11 @@
 .post__image {
     width: 100%;
     height: auto;
+}
+.user__image {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
 }
 </style>
 
@@ -52,8 +97,10 @@ export default {
         loading: true,
         post: {},
         user: {},
+        comments: [],
         postImage: '',
-        imageLoaded: false
+        imageLoaded: false,
+        loadingComments: false
     }
   },
   async beforeMount() {
@@ -79,10 +126,23 @@ export default {
       .then((res)=> {
           this.postImage = res.data;
       })
+      await axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${this.$route.params.id}`)
+      .then((res)=> {
+        this.comments = res.data;
+        this.comments.forEach((comment,key) => {
+            this.comments[key].image = 'https://avatars.dicebear.com/4.5/api/avataaars/' + 'qwertyuiop'.charAt(Math.floor(Math.random() * 10)) + '.svg?mood[]=happy';
+            this.comments[key].expanded = false;
+        });
+      })
       this.loading = false;
   },
   methods: {
-      moment
+    moment,
+    expandComment(e) {
+        this.loadingComments = true;
+        this.comments[e].expanded = true;
+        this.loadingComments = false;
+    }
   }
 }
 </script>
